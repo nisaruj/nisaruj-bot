@@ -3,8 +3,10 @@ const server_port = process.env.PORT || 8080;
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var crypto = require('crypto');
 
+const middleware = require('@line/bot-sdk').middleware
+const JSONParseError = require('@line/bot-sdk').JSONParseError
+const SignatureValidationFailed = require('@line/bot-sdk').SignatureValidationFailed
 const config = {
     channelAccessToken: process.env.CH_ATOKEN ,
     channelSecret: process.env.CH_SECRET

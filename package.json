@@ -1,5 +1,5 @@
 {
-  "name": "nisarujbot",
+  "name": "nisaruj-bot",
   "version": "1.0.0",
   "description": "LINE bot for experimental purpose.",
   "main": "index.js",
