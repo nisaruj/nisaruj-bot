@@ -3,6 +3,7 @@ const server_port = process.env.PORT || 8080;
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var mathjs = require('mathjs');
 
 const Client = require('@line/bot-sdk').Client;
 const middleware = require('@line/bot-sdk').middleware
@@ -26,9 +27,15 @@ app.post('/webhook',function(req, res) {
     const event = req.body.events[0];
     if (event.type === 'message') {
         if (event.message.type === 'text') {
-            source = event.source;
-            client.pushMessage(source.userId,{type: "text", text: "you typed : " + event.message.text});
-            console.log(event.message.text);
+            getText = event.message.text;
+            var output = 'Nothing';
+            if (getText.slice(0,9).toLowerCase() === 'calculate') {
+                output = mathjs.eval(getText.slice(9)).toString();
+            } else {
+                output = "you typed : " + getText;
+            }
+            client.pushMessage(event.source.userId,{type: "text", text: output});
+            console.log(event.source.userId + ' : ' + getText);
         }
     }
     //console.log(res.json(req.body.events.message));

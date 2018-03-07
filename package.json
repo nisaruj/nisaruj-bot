@@ -12,6 +12,7 @@
     "@line/bot-sdk": "^6.0.0",
     "body-parser": "^1.18.2",
     "crypto": "^1.0.1",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "mathjs": "^4.0.0"
   }
 }
