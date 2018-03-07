@@ -21,7 +21,13 @@ app.get('/',function(req,res) {
 });
 
 app.post('/webhook',function(req, res) {
-    console.log(res.json(req.body.events));
+    const event = req.body.events[0];
+    if (event.type === 'message') {
+        if (event.message.type === 'text') {
+            console.log(event.message.text);
+        }
+    }
+    //console.log(res.json(req.body.events.message));
 });
 
 app.listen(server_port);
