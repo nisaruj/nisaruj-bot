@@ -26,7 +26,7 @@ app.post('/webhook',function(req, res) {
     const event = req.body.events[0];
     if (event.type === 'message') {
         if (event.message.type === 'text') {
-            source = event.message.source;
+            source = event.source;
             client.pushMessage(source.userId,{type: "text", text: "you typed : " + event.message.text});
             console.log(event.message.text);
         }
