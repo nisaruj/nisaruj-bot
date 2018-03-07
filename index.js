@@ -30,7 +30,7 @@ app.post('/webhook',function(req, res) {
             getText = event.message.text;
             var output = 'Nothing';
             if (getText.slice(0,4).toLowerCase() === 'calc') {
-                output = mathjs.eval(getText.slice(4)).toString();
+                output = mathjs.eval(getText.slice(getText.search(' '))).toString();   
             } else {
                 output = "you typed : " + getText;
             }
