@@ -29,7 +29,7 @@ app.post('/webhook',function(req, res) {
         if (event.message.type === 'text') {
             getText = event.message.text;
             var output = 'Nothing';
-            if (getText.slice(0,9).toLowerCase() === 'calculate') {
+            if (getText.slice(0,9).toLowerCase() === 'calculate' || getText.slice(0,4).toLowerCase() === 'calc') {
                 output = mathjs.eval(getText.slice(9)).toString();
             } else {
                 output = "you typed : " + getText;
@@ -38,7 +38,6 @@ app.post('/webhook',function(req, res) {
             console.log(event.source.userId + ' : ' + getText);
         }
     }
-    //console.log(res.json(req.body.events.message));
 });
 
 app.listen(server_port);
