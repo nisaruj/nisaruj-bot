@@ -1,0 +1,6 @@
+{
+    "list" : [
+        ["help", "Get all commands"],
+        ["calc <math expression>", "Calculate mathematical expression"]
+    ]
+}
